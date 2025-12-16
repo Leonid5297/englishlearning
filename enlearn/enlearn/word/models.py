@@ -77,7 +77,7 @@ class Sound(models.Model):
     def save(self, *args, **kwargs):
         if self.link and not self.sound:
             try:
-                r = requests.get(sepklf.link)
+                r = requests.get(self.link)
                 self.sound.save(self.link.split("/")[-1], ContentFile(r.content), save=False)
             except Exception as e:
                 print('Ошибка', e)
